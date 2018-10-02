@@ -15,3 +15,13 @@ with open(wrestlingCSV, 'r') as csvfile:
 
     # Loop through the data
     for row in csvreader:
+
+        #COUNT TOTAL NUMBER OF MONTHS (ROW 1)
+        # TOTAL NET PROFITS
+        #AVERAGE CHANGE BETWEEN MONTHS
+        #GREATEST INCREASE IN PROFITS (mONTH & VALUE)
+        #GREATEST DECREASE IN PROFIT (MONTH AND VALUE)
+
+        #PRINT ANALYSIS TO TERMINAL
+        #EXPORT RESULTS TO CSV FILE
+        
