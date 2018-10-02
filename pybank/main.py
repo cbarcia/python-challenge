@@ -1,12 +1,18 @@
 #pybank main
 import os
 import csv
+k=0
+def Bankfunction(delta):
+    while (row[2] != ''):
+        banktotal=  k +1
+        netsum = int(netsum) + int(row[2])
+        
 
 # Path to collect data from the folder
-bankcsv = os.path.join('budget_data')
+bankcsv = os.path.join('budget_data.csv')
 
 # Read in the CSV file
-with open(wrestlingCSV, 'r') as csvfile:
+with open(bankcsv, 'r') as csvfile:
 
  # Split the data on commas
     csvreader = csv.reader(csvfile, delimiter=',')
@@ -15,6 +21,15 @@ with open(wrestlingCSV, 'r') as csvfile:
 
     # Loop through the data
     for row in csvreader:
+        while (row[2]==''):
+        print(f'''
+        ---------------------------------------------
+        Number of transactions: {banktotal}
+                  Net Value: {netsum}
+        --------- -----------------------------------''')
+        print(row)
+        Bankfunction(row[2])
+
 
         #COUNT TOTAL NUMBER OF MONTHS (ROW 1)
         # TOTAL NET PROFITS
@@ -24,4 +39,3 @@ with open(wrestlingCSV, 'r') as csvfile:
 
         #PRINT ANALYSIS TO TERMINAL
         #EXPORT RESULTS TO CSV FILE
-        
