@@ -1,13 +1,26 @@
 #pybank main
 import os
 import csv
-k=0
-def Bankfunction(delta):
-    while (row[2] != ''):
-        banktotal=  k +1
-        netsum = int(netsum) + int(row[2])
-        
+import numpy as np 
 
+k=0
+i=0
+netsum=0
+rho = []
+beta = [0,0]
+delta = []
+gamma = []
+def Bankfunction(delta):
+    if (row[2] != ''):
+        k =  k +1
+        banktotal = k
+        netsum = 0
+        old = "hello"
+        new = "hello"
+        chg = 0
+        high = 0
+        low = 0
+        return 
 # Path to collect data from the folder
 bankcsv = os.path.join('budget_data.csv')
 
@@ -17,18 +30,43 @@ with open(bankcsv, 'r') as csvfile:
  # Split the data on commas
     csvreader = csv.reader(csvfile, delimiter=',')
 
-    header = next(csvreader)
+    header = next(csvfile)
 
     # Loop through the data
     for row in csvreader:
-        while (row[2]==''):
-        print(f'''
+        
+        rho = row[:]
+        beta[:] = rho[:]+beta[:]
+        gamma[:]= rho[:]+gamma[:]
+        gamma.pop(0)
+        high = max(gamma)
+        low = min(gamma)
+               
+                #beta.append(rho)
+        #del beta[0]
+        
+        chg = int(beta[3])-int(beta[1])
+
+        delta.append(chg)
+        avgchg = sum(delta)/len(delta)
+        k =  k +1
+        banktotal = k
+        #netsum = sum(gamma)
+
+        
+        
+        
+    print(f'''
         ---------------------------------------------
         Number of transactions: {banktotal}
-                  Net Value: {netsum}
+                     Net Value: {netsum}
+                Average Change: {avgchg}
+                Maximum Profit: {high}
+                  Biggest Loss: {low}
+
         --------- -----------------------------------''')
-        print(row)
-        Bankfunction(row[2])
+            
+        
 
 
         #COUNT TOTAL NUMBER OF MONTHS (ROW 1)
