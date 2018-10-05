@@ -1,7 +1,8 @@
 #pybank main
 import os
 import csv
-import numpy as np 
+import pandas as pd
+
 
 k=0
 i=0
@@ -65,6 +66,19 @@ with open(bankcsv, 'r') as csvfile:
                   Biggest Loss: {low}
 
         --------- -----------------------------------''')
+    exportfile = pd.DataFrame(
+    {"Number of Transactions": [banktotal],
+     "Net Value": [netsum],
+     "Average Change": [avgchg],
+     "Maximum Profit": [high],
+     "Biggest Loss": [low]
+     })
+writer = pd.ExcelWriter('output.xlsx')
+exportfile.to_excel(writer,'sheet1')
+writer.save()
+
+
+    
             
         
 
