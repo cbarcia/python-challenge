@@ -66,7 +66,7 @@ with open(bankcsv, 'r') as csvfile:
                   Biggest Loss: {low}
 
         --------- -----------------------------------''')
-    exportfile = pd.DataFrame(
+exportfiledf = pd.DataFrame(
     {"Number of Transactions": [banktotal],
      "Net Value": [netsum],
      "Average Change": [avgchg],
@@ -74,7 +74,7 @@ with open(bankcsv, 'r') as csvfile:
      "Biggest Loss": [low]
      })
 writer = pd.ExcelWriter('output.xlsx')
-exportfile.to_excel(writer,'sheet1')
+exportfiledf.to_excel(writer,'sheet1')
 writer.save()
 
 
